@@ -24,7 +24,7 @@ user { $name:
   password => $password,
 }
 file { $home:
-  ensure  => $ensure,
+  ensure  => directory,
   owner   => $name,
   group   => $name,
   mode    => '0700',
