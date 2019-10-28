@@ -6,6 +6,6 @@ class manage_users (
   $user_hash = $manage_users::params::user_hash,
 ){
 if $user_hash != undef {
-  create_resources (manage_users::user_resource, $user_hash)
+  create_resources (manage_users::resource_mkuser, $user_hash)
   }
 }

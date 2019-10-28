@@ -1,6 +1,6 @@
 # defined typee to create users
 #
-define manage_users::user_resourse(
+define manage_users::resource_mkuser(
   $ensure,
   $uid,
   $gid,
