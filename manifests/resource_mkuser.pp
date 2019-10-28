@@ -60,7 +60,7 @@ if $ssh_id_rsa != undef {
 exec { "move in skel for ${name}":
   command => "/usr/bin/cp /etc/skel/.* ${home}",
   user    => $name,
-  creates => "${name}/.bashrc",
+  creates => "${home}/.bashrc",
   require => File[$home],
 }
 }
