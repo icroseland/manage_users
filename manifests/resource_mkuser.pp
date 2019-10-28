@@ -16,20 +16,26 @@ group { $name:
   gid    => $gid,
   }
 user { $name:
-  ensure      => $ensure,
-  uid         => $uid,
-  gid         => $gid,
-  groups      => $group_array,
-  home        => $home,
-  manage_home => true,
-  password    => $password,
+  ensure   => $ensure,
+  uid      => $uid,
+  gid      => $gid,
+  groups   => $group_array,
+  home     => $home,
+  password => $password,
+}
+file { $home:
+  ensure  => $ensure,
+  owner   => $name,
+  group   => $name,
+  mode    => '0700',
+  require => User[$name],
 }
 file {"${home}/.ssh":
   ensure  => directory,
   owner   => $name,
   group   => $name,
   mode    => '0700',
-  require => User[$name],
+  require => File[$home],
   }
 if $ssh_id_rsa_pub != undef {
   file { "${home}/.ssh/id_rsa.pub":
