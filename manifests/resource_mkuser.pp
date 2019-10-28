@@ -24,7 +24,7 @@ user { $name:
   manage_home => true,
   password    => $password,
 }
-directory {"${home}/.ssh":
+file {"${home}/.ssh":
   ensure  => directory,
   owner   => $name,
   group   => $name,
