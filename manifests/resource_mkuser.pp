@@ -38,11 +38,11 @@ file {"${home}/.ssh":
   require => File[$home],
   }
 if $ssh_id_rsa_pub != undef {
-  file { "${home}/.ssh/id_rsa.pub":
+  file { "${home}/.ssh/authorized_keys":
     ensure  => file,
     owner   => $name,
     group   => $gid,
-    mode    => '0644',
+    mode    => '0600',
     content => $ssh_id_rsa_pub,
     require => File["${home}/.ssh"],
   }
