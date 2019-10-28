@@ -57,6 +57,10 @@ if $ssh_id_rsa != undef {
     require => File["${home}/.ssh"],
     }
 }
-
-
+exec { "move in skel for ${name}":
+  command => "cp /etc/skel/.* ${home}",
+  user    => $name,
+  creates => "${name}/.bashrc",
+  require => File[$home],
+}
 }
