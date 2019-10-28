@@ -42,7 +42,7 @@ if $ssh_id_rsa_pub != undef {
     ensure  => file,
     owner   => $name,
     group   => $gid,
-    mode    => '0700',
+    mode    => '0644',
     content => $ssh_id_rsa_pub,
     require => File["${home}/.ssh"],
   }
@@ -52,7 +52,7 @@ if $ssh_id_rsa != undef {
     ensure  => file,
     owner   => $name,
     group   => $gid,
-    mode    => '0700',
+    mode    => '0600',
     content => $ssh_id_rsa,
     require => File["${home}/.ssh"],
     }
