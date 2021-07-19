@@ -4,12 +4,12 @@ define manage_users::resource_mkuser(
   $ensure,
   $uid,
   $gid,
-  $group_array,
+  $group_array=undef,
   $home,
   $shell,
-  $password,
-  $ssh_id_rsa_pub,
-  $ssh_id_rsa,
+  $password=undef,
+  $ssh_id_rsa_pub=undef,
+  $ssh_id_rsa=undef,
 ){
 group { $name:
   ensure => $ensure,
@@ -30,6 +30,7 @@ file { $home:
   mode    => '0700',
   require => User[$name],
 }
+if ($ssh_id_rsa_pub != undef)||($ssh_id_rsa != undef){ 
 file {"${home}/.ssh":
   ensure  => directory,
   owner   => $name,
@@ -56,6 +57,7 @@ if $ssh_id_rsa != undef {
     content => $ssh_id_rsa,
     require => File["${home}/.ssh"],
     }
+}
 }
 exec { "move in .bash_logout ${name}":
   command => "/usr/bin/cp /etc/skel/.bash_logout ${home}",
