@@ -8,8 +8,8 @@ class manage_users (
 ){
 if $group_hash != undef {
   create_resources (manage_users::resource_mkgroups, $group_hash)
-}
+}->
 if $user_hash != undef {
-  -> create_resources (manage_users::resource_mkuser, $user_hash)
+  create_resources (manage_users::resource_mkuser, $user_hash)
   }
 }
