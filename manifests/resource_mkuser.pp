@@ -30,7 +30,7 @@ file { $home:
   mode    => '0700',
   require => User[$name],
 }
-if ($ssh_id_rsa_pub != undef)||($ssh_id_rsa != undef){ 
+if ($ssh_id_rsa_pub != undef) and ($ssh_id_rsa != undef){ 
 file {"${home}/.ssh":
   ensure  => directory,
   owner   => $name,
