@@ -22,6 +22,7 @@ user { $name:
   groups   => $group_array,
   home     => $home,
   password => $password,
+  require  => Group[$group_array],
 }
 file { $home:
   ensure  => directory,
