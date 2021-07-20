@@ -3,9 +3,11 @@
 #
 #
 class manage_users (
-  $user_hash = $manage_users::params::user_hash,
-  $group_hash = $manage_users::params::group_hash
 ){
+
+$user_hash = lookup ( manage_users::user_hash, { merge  =>  { strategy => 'hash' }, default_value => undef  }
+$group_hash = lookup( manage_users::group_hash,{ merge  =>  { strategy => 'hash' }, default_value => undef  }
+
 if $group_hash != undef {
   create_resources (manage_users::resource_mkgroups, $group_hash)
 }
