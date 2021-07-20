@@ -16,7 +16,6 @@ group { $name:
   gid    => $gid,
   }
 
-notify {"Adding a user username=${name} / password=${password}": }
 
 user { $name:
   ensure   => $ensure,
