@@ -7,7 +7,7 @@ define manage_users::resource_mkuser(
   $group_array=undef,
   $home,
   $shell,
-  $password="not_from_hiera",
+  $password='not from hiera',
   $ssh_id_rsa_pub=undef,
   $ssh_id_rsa=undef,
 ){
