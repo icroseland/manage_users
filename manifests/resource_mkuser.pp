@@ -15,6 +15,9 @@ group { $name:
   ensure => $ensure,
   gid    => $gid,
   }
+
+notify {"Adding a user username=${name} / password=${password}": }
+
 user { $name:
   ensure   => $ensure,
   uid      => $uid,
